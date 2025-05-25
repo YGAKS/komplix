@@ -274,15 +274,59 @@
   flex: 1;
   text-align: justify;
 }
+
+.notification {
+  position: fixed;
+  top: 70px;
+  left: 0;
+  right: 0;
+  width: 90%;
+  margin: 0 auto;
+  background-color: #333;
+  color: #fff;
+  padding: 15px 10px;
+  font-size: 10px;
+  color: #ccc;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  animation: slideDown 0.3s ease;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.notification.hide {
+  transform: translateY(-20px);
+  opacity: 0;
+}
+
+.notification button {
+  background: none;
+  border: none;
+  color: #ccc;
+  font-size: 10px;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
   </style>
 </head>
 <body>
 
-<div class="slide-menu" id="slideMenu"><a href="/tutorial"><i class="fa fa-book"></i><span>Infotutorial</span></a><a href="/pengetahuan"><i class="fa fa-info-circle"></i><span>Pengetahuan</span></a><a href="/pembaruan"><i class="fa fa-calendar"></i><span>Pembaruan</span></a><a href="/marketplace"><i class="fa fa-store"></i><span>Marketplace</span></a><a href="/leaderboard"><i class="fa fa-trophy"></i><span>Leaderboard</span></a></div>
+<div class="slide-menu" id="slideMenu"><a href="/tutorial"><i class="fa fa-book"></i><span>Infotutorial</span></a><a href="/pengetahuan"><i class="fa fa-info-circle"></i><span>Pengetahuan</span></a><a href="/marketplace"><i class="fa fa-store"></i><span>Marketplace</span></a><a href="/leaderboard"><i class="fa fa-trophy"></i><span>Leaderboard</span></a></div>
 <div class="menu-overlay" id="menuOverlay"></div>
 
 <div class="navbar"><div class="navbar-left"><div class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></div><div class="navbar-title">MINEPLIX</div></div>
-<div class="navbar-center"><a href="/tutorial">Infotutorial</a><a href="/pengetahuan">Pengetahuan</a><a href="/pembaruan">Pembaruan</a><a href="/marketplace">Marketplace</a><a href="/leaderboard">Leaderboard</a></div><div class="navbar-right"><i class="fas fa-store" onclick="location.href='/marketplace'"></i></div></div>
+<div class="navbar-center"><a href="/tutorial">Infotutorial</a><a href="/pengetahuan">Pengetahuan</a><a href="/marketplace">Marketplace</a><a href="/leaderboard">Leaderboard</a></div><div class="navbar-right"><i class="fas fa-store" onclick="location.href='/marketplace'"></i></div></div>
 
 <div class="card-list-container"><div class="card-list">
  
@@ -293,6 +337,9 @@
 <div class="card" onclick="location.href='/article/fitur-plixmine.html'"><img src="contoh.webp" alt="Card Image"><div class="card-content"><div class="card-title">What news coming fitur for PLIXMINE!<i class="fas fa-info card-info-icon"></i></div><div class="card-meta">contoh | coming soon</div></div></div>
  
 </div></div>
+
+<div class="notification" id="notification"><span>Sering-sering refresh untuk mengecek update! data terbaru.</span><button onclick="hideNotification()">&times;</button></div><script>function hideNotification(){const e=document.getElementById("notification");e&&(e.classList.add("hide"),setTimeout(()=>{e.style.display="none"},500))}setTimeout(()=>{hideNotification()},5e3);
+</script>
 
 <script>const menuToggle=document.getElementById('menuToggle'),slideMenu=document.getElementById('slideMenu'),menuOverlay=document.getElementById('menuOverlay');let isMenuOpen=!1;menuToggle.addEventListener('click',e=>{e.stopPropagation(),isMenuOpen=!isMenuOpen,slideMenu.classList.toggle('open'),menuOverlay.classList.toggle('show'),menuToggle.innerHTML=isMenuOpen?'<i class="fas fa-xmark"></i>':'<i class="fas fa-bars"></i>'}),document.addEventListener('click',e=>{isMenuOpen&&!slideMenu.contains(e.target)&&!menuToggle.contains(e.target)&&(slideMenu.classList.remove('open'),menuOverlay.classList.remove('show'),isMenuOpen=!1,menuToggle.innerHTML='<i class="fas fa-bars"></i>')});</script>
 </body>
