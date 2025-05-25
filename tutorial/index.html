@@ -318,31 +318,103 @@
     opacity: 0.6;
   }
   
-  .breadcrumb {
-    font-size: 14px;
-    background-color: #333;
-    margin: 80px 15px 0;
-    padding: 5px;
-  }
+.top-bar {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin: 80px 0 0;
+  padding: 0 15px;
+  box-sizing: border-box;
+  user-select: none;
+}
 
-  .breadcrumb span {
-    color: #aaa;
-    font-size: 12px;
-    padding-left: 5px;
-    border-left: 2px #ccc solid;
-  }
+.breadcrumb {
+  font-size: 14px;
+  color: #aaa;
+  white-space: nowrap;
+}
+
+.search-bar {
+  flex: 1;
+  max-width: 100%;
+  position: relative;
+}
+
+.search-bar input {
+  width: 100%;
+  padding: 8px 12px;
+  border: none;
+  outline: none;
+  background-color: #2a2a2a;
+  color: #ccc;
+  font-size: 14px;
+  border-radius: 6px;
+  box-sizing: border-box;
+}
+
+#clearSearch {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #2a2a2a;
+  padding: 5px;
+  border-radius: 20px;
+  border: none;
+  color: #ccc;
+  font-size: 16px;
+  display: none;
+  line-height: 1;
+}
+
+.scroll-top-btn {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background-color: #5ab4f8;
+  color: #fff;
+  border: none;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  font-size: 20px;
+  z-index: 999;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  transition: opacity 0.3s ease, transform 0.3s ease, background-color 0.3s ease;
+  opacity: 0;
+  transform: translateY(20px);
+  pointer-events: none;
+}
+
+.scroll-top-btn.show {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.scroll-top-btn:active {
+  background-color: #4794d6;
+  transform: translateY(0) scale(1.1);
+}
+
+.scroll-top-btn i {
+  position: relative;
+  top: 1px;
+}
 </style>
 </head>
 <body>
 
-<div class="slide-menu" id="slideMenu"><a href="" onclick="history.back();return false;"><i class="fa fa-arrow-left"></i><span>Kembali</span></a><a href="/pengetahuan"><i class="fa fa-info-circle"></i><span>Pengetahuan</span></a><a href="/pembaruan"><i class="fa fa-calendar"></i><span>Pembaruan</span></a><a href="/marketplace"><i class="fa fa-store"></i><span>Marketplace</span></a><a href="/leaderboard"><i class="fa fa-trophy"></i><span>Leaderboard</span></a></div><div class="menu-overlay" id="menuOverlay"></div><div class="navbar"><div class="navbar-left"><div class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></div><div class="navbar-title">MINEPLIX</div></div><div class="navbar-center"><a href="" class="link" onclick="history.back(); return false;">Kembali</a><a href="/pengetahuan" class="link">Pengetahuan</a><a href="/pembaruan" class="link">Pembaruan</a><a href="/marketplace" class="link">Marketplace</a><a href="/leaderboard" class="link">Leaderboard</a></div><div class="navbar-right"><i class="fas fa-store" onclick="location.href='/marketplace'"></i></div></div>
+<div class="slide-menu" id="slideMenu"><a href="/"><i class="fa fa-house"></i><span>Beranda</span></a><a href="/pengetahuan"><i class="fa fa-info-circle"></i><span>Pengetahuan</span></a><a href="/pembaruan"><i class="fa fa-calendar"></i><span>Pembaruan</span></a><a href="/marketplace"><i class="fa fa-store"></i><span>Marketplace</span></a><a href="/leaderboard"><i class="fa fa-trophy"></i><span>Leaderboard</span></a></div><div class="menu-overlay" id="menuOverlay"></div><div class="navbar"><div class="navbar-left"><div class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></div><div class="navbar-title">MINEPLIX</div></div><div class="navbar-center"><a href="" class="link" onclick="history.back(); return false;">Kembali</a><a href="/pengetahuan" class="link">Pengetahuan</a><a href="/pembaruan" class="link">Pembaruan</a><a href="/marketplace" class="link">Marketplace</a><a href="/leaderboard" class="link">Leaderboard</a></div><div class="navbar-right"><i class="fas fa-store" onclick="location.href='/marketplace'"></i></div></div>
 
 
- <div class="breadcrumb"><span>Halaman Info fitur dasar dan Tutorial</span></div>
+<div class="top-bar"><div class="breadcrumb">halaman tutorial</div><div class="search-bar"><input type="text" id="searchInput" placeholder="Cari tutorial apa?."><button id="clearSearch"><i class="fa-solid fa-circle-xmark"></i></button></div></div>
+<button id="scrollTopBtn" class="scroll-top-btn" title="Kembali ke atas"><i class="fas fa-arrow-up"></i></button>
+ 
 <div class="article-container">
  
-<div class="article">
-  <div class="title1">Tutorial Dasar Bermain di Mineplix</div>
+<div class="article" id="tutorial dasar pemula">
+ <div class="title1">Tutorial Dasar Bermain di Mineplix</div>
   <div class="text">Selamat datang di Mineplix! Di sini, kamu bisa main bareng teman, ngumpulin uang, farming, mining, dan bahkan ikut dalam war clan yang seru. Nikmati keseruan bermain bersama komunitas dan temukan teman baru!</div>
 
   <img src="https://plixgo.my.id/contoh.webp" alt="Dasar Bermain di Mineplix">
@@ -412,7 +484,7 @@
   </div>
 <hr></div>
 
-<div class="article">
+<div class="article" id="tutorial economy uang money shop sell">
   <div class="title1">Economy System Tutorial - Mineplix</div>
   <div class="text">Ingin jadi kaya di Mineplix? Yuk, pahami cara kerja ekonomi di server ini! Mulai dari jual-beli item, kirim uang ke teman, hingga tips memaksimalkan keuntunganmu!</div>
 
@@ -469,278 +541,6 @@
   </div>
   <hr></div>
 
-<div class="article">
-  <div class="title1">Clan System - Mineplix</div>
-  <div class="text">Di Mineplix, kamu bisa bikin clan atau gabung clan bareng teman-teman! Sistem clan bikin main bareng makin seru, bisa bikin tim solid dan pamer tag clan keren di chat!</div>
-
-  <img src="https://plixgo.my.id/contoh.webp" alt="Clan System Mineplix">
-
-  <div class="title2">Apa itu Clan?</div>
-  <div class="text">Clan adalah fitur yang memungkinkan kamu untuk membuat tim dan punya nama kelompok sendiri. Tiap clan punya nama, tag, dan member yang bisa saling bantu dan koordinasi.</div>
-
-  <div class="tip-box">
-    <strong>Tip:</strong> Punya clan bikin kamu lebih gampang koordinasi, apalagi buat event PvP atau farming bareng!
-  </div>
-
-  <div class="title2">Cara Membuat Clan</div>
-  <div class="text">
-    <ul>
-      <li>Buat clan baru: <code>/clan create &lt;nama-clan&gt;</code></li>
-      <li>Undang teman: <code>/clan invite &lt;nama-pemain&gt;</code></li>
-      <li>Terima undangan: <code>/clan accept</code></li>
-    </ul>
-    Kamu juga bisa lihat daftar clan dengan <code>/clan list</code>.
-  </div>
-
-  <img src="https://plixgo.my.id/contoh.webp" alt="Clan Command Example">
-
-  <div class="title2">Keuntungan Punya Clan</div>
-  <div class="text">
-    <ul>
-      <li>Punya nama dan tag keren di chat.</li>
-      <li>Akses ke fitur chat khusus clan.</li>
-      <li>Bisa saling bantu dan koordinasi dengan anggota clan.</li>
-      <li>Ikut event clan khusus dan dapat reward bareng!</li>
-    </ul>
-  </div>
-
-  <div class="tip-box">
-    <strong>Tip:</strong> Jaga nama baik clan-mu! Patuhi aturan server dan main fair play.
-  </div>
-
-  <div class="text">Gabung atau bikin clan sekarang, biar main di Mineplix makin seru bareng teman-temanmu. Siapa tahu clan kamu jadi yang terkuat di server!</div>
-
-  <div class="faq-card">
-    <div class="faq-question">Bagaimana cara membuat clan baru? <i class="fas fa-chevron-down"></i></div>
-    <div class="faq-answer">
-      Gunakan perintah <code>/clan create &lt;nama-clan&gt;</code> untuk membuat clan baru di server.
-    </div>
-  </div>
-
-  <div class="faq-card">
-    <div class="faq-question">Bagaimana cara bergabung ke clan teman? <i class="fas fa-chevron-down"></i></div>
-    <div class="faq-answer">
-      Minta temanmu mengundang dengan <code>/clan invite &lt;nama-pemain&gt;</code>, lalu terima undangan dengan <code>/clan accept</code>.
-    </div>
-  </div>
-
-  <div class="faq-card">
-    <div class="faq-question">Apa saja keuntungan punya clan? <i class="fas fa-chevron-down"></i></div>
-    <div class="faq-answer">
-      Punya clan bikin main bareng lebih seru: ada tag di chat, fitur chat khusus clan, dan kesempatan ikut event clan bareng.
-    </div>
-  </div>
-<hr></div>
-
-<div class="article">
-  <div class="title1">Land System - GriefPrevention</div>
-  <div class="text">Di Mineplix, kita pakai plugin GriefPrevention untuk proteksi lahan. Dengan sistem ini, kamu bisa claim area sendiri dengan mudah, dan lindungi bangunanmu dari griefing!</div>
-
-  <img src="https://plixgo.my.id/contoh.webp" alt="GriefPrevention System Mineplix">
-
-  <div class="title2">Apa itu GriefPrevention?</div>
-  <div class="text">GriefPrevention adalah plugin proteksi lahan yang simpel dan populer. Kamu cukup pakai Golden Shovel untuk claim area, lalu atur siapa saja yang boleh membangun di dalamnya. Aman dan mudah!</div>
-
-  <div class="tip-box">
-    <strong>Tip:</strong> Jangan lupa claim dulu sebelum mulai bangun supaya base kamu aman dari pemain lain.
-  </div>
-
-  <div class="title2">Cara Claim Lahan</div>
-  <div class="text">
-    <ul>
-      <li>Dapatkan Golden Shovel.</li>
-      <li>Klik kanan di dua titik sudut area dengan Golden Shovel untuk membuat claim.</li>
-      <li>Claim berhasil! Kamu akan lihat batas area claim dengan partikel emas.</li>
-      <li>Lihat batas claim dengan <code>/claims</code>.</li>
-    </ul>
-  </div>
-
-  <img src="https://plixgo.my.id/contoh.webp" alt="Golden Shovel Claim Example">
-
-  <div class="title2">Cara Invite Teman ke Claim</div>
-  <div class="text">
-    <ul>
-      <li>Undang teman: <code>/trust &lt;nama-pemain&gt;</code></li>
-      <li>Hapus akses teman: <code>/untrust &lt;nama-pemain&gt;</code></li>
-      <li>Lihat siapa saja yang di-trust: <code>/trustlist</code></li>
-    </ul>
-  </div>
-
-  <div class="title2">Fitur Penting GriefPrevention</div>
-  <div class="text">
-    <ul>
-      <li>Proteksi lahan otomatis saat pertama kali ambil Golden Shovel.</li>
-      <li>Mencegah griefing dan pencurian.</li>
-      <li>Akses kontrol penuh: atur siapa yang bisa bangun di claim kamu.</li>
-    </ul>
-  </div>
-
-  <div class="tip-box">
-    <strong>Tip:</strong> Gunakan <code>/abandonclaim</code> jika ingin menghapus claim lama.
-  </div>
-
-  <div class="text">Yuk, lindungi lahanmu sekarang di Mineplix dengan GriefPrevention. Bangun dengan tenang tanpa takut grief, dan ajak temanmu bikin base bareng!</div>
-
-  <div class="faq-card">
-    <div class="faq-question">Bagaimana cara claim lahan di Mineplix? <i class="fas fa-chevron-down"></i></div>
-    <div class="faq-answer">
-      Gunakan Golden Shovel, lalu klik kanan di dua titik sudut area yang ingin kamu claim. Mudah banget!
-    </div>
-  </div>
-
-  <div class="faq-card">
-    <div class="faq-question">Bagaimana cara invite teman ke claim? <i class="fas fa-chevron-down"></i></div>
-    <div class="faq-answer">
-      Gunakan <code>/trust &lt;nama-pemain&gt;</code> untuk memberikan akses kepada temanmu di dalam area claim.
-    </div>
-  </div>
-
-  <div class="faq-card">
-    <div class="faq-question">Apa fungsi Golden Shovel? <i class="fas fa-chevron-down"></i></div>
-    <div class="faq-answer">
-      Golden Shovel digunakan untuk menentukan area claim dengan klik kanan di dua titik sudut lahan.
-    </div>
-  </div>
-<hr></div>
-
-<div class="article">
-  <div class="title1">Skills System - AuraSkills</div>
-  <div class="text">Di Mineplix, kita pakai plugin <strong>AuraSkills</strong> untuk sistem skill yang bikin main makin seru! Tingkatkan skill dengan aktivitas seperti mining, fishing, combat, dan lainnya.</div>
-
-  <img src="https://plixgo.my.id/contoh.webp" alt="AuraSkills Mineplix">
-
-  <div class="title2">Apa itu AuraSkills?</div>
-  <div class="text">AuraSkills adalah plugin yang menambahkan skill dan level di server. Setiap pemain punya skill berbeda yang bisa naik level sesuai aktivitasnya, misalnya mining, farming, fishing, atau fighting.</div>
-
-  <div class="tip-box">
-    <strong>Tip:</strong> Rajin-rajin main supaya level skill kamu makin tinggi dan dapetin efek-efek keren!
-  </div>
-
-  <div class="title2">Cara Cek Skill</div>
-  <div class="text">
-    <ul>
-      <li>Lihat skill: <code>/skills</code></li>
-      <li>Lihat detail skill: <code>/skills view &lt;nama-skill&gt;</code></li>
-      <li>Level up skill dengan main seperti biasa! Mining = naik mining, combat = naik combat.</li>
-    </ul>
-  </div>
-
-  <img src="https://plixgo.my.id/contoh.webp" alt="Skills System Example">
-
-  <div class="title2">Skill yang Tersedia</div>
-  <div class="text">
-    <ul>
-      <li>Mining</li>
-      <li>Farming</li>
-      <li>Fishing</li>
-      <li>Combat</li>
-      <li>Woodcutting</li>
-      <li>Archery</li>
-    </ul>
-  </div>
-
-  <div class="tip-box">
-    <strong>Tip:</strong> Cek leaderboard skill dengan <code>/skills top</code> dan jadilah yang terbaik di server!
-  </div>
-
-  <div class="text">Makin sering kamu bermain, makin tinggi skillmu. Ayo tingkatkan semua skill dan jadi pemain terhebat di Mineplix!</div>
-
-  <div class="faq-card">
-    <div class="faq-question">Bagaimana cara cek skill saya? <i class="fas fa-chevron-down"></i></div>
-    <div class="faq-answer">
-      Gunakan perintah <code>/skills</code> untuk lihat daftar skill dan level kamu di server.
-    </div>
-  </div>
-
-  <div class="faq-card">
-    <div class="faq-question">Apakah semua aktivitas bisa meningkatkan skill? <i class="fas fa-chevron-down"></i></div>
-    <div class="faq-answer">
-      Ya, tiap aktivitas punya skill sendiri. Contoh: mining = naik skill mining, farming = naik skill farming.
-    </div>
-  </div>
-
-  <div class="faq-card">
-    <div class="faq-question">Apakah ada efek khusus saat skill tinggi? <i class="fas fa-chevron-down"></i></div>
-    <div class="faq-answer">
-      Tentu! Semakin tinggi level skill, makin besar efek bonusnya. Contoh: mining lebih cepat, damage lebih sakit, dan lainnya.
-    </div>
-  </div>
-<hr></div>
-
-<div class="article">
-  <div class="title1">Jobs System - JobsReborn</div>
-  <div class="text">Di Mineplix, kita pakai plugin <strong>JobsReborn</strong> untuk sistem kerja yang bikin kamu bisa dapet penghasilan tambahan di server! Pilih pekerjaan sesuai minatmu dan mulai kumpulin koin sekarang.</div>
-
-  <img src="https://plixgo.my.id/contoh.webp" alt="Jobs System Mineplix">
-
-  <div class="title2">Apa itu JobsReborn?</div>
-  <div class="text">JobsReborn adalah plugin sistem kerja di server Minecraft. Kamu bisa bergabung di berbagai pekerjaan seperti miner, farmer, hunter, dan lainnya. Setiap aktivitasmu akan menghasilkan koin!</div>
-
-  <div class="tip-box">
-    <strong>Tip:</strong> Pilih job yang sesuai dengan gaya mainmu. Suka mining? Jadi miner! Suka farming? Jadi farmer!
-  </div>
-
-  <div class="title2">Cara Bergabung di Pekerjaan</div>
-  <div class="text">
-    <ul>
-      <li>Lihat daftar pekerjaan: <code>/jobs browse</code></li>
-      <li>Gabung pekerjaan: <code>/jobs join &lt;nama-job&gt;</code></li>
-      <li>Cek info pekerjaan: <code>/jobs info &lt;nama-job&gt;</code></li>
-      <li>Keluar pekerjaan: <code>/jobs leave &lt;nama-job&gt;</code></li>
-    </ul>
-  </div>
-
-  <img src="https://plixgo.my.id/contoh.webp" alt="Jobs System Example">
-
-  <div class="title2">Daftar Pekerjaan yang Tersedia</div>
-  <div class="text">
-    <ul>
-      <li>Miner</li>
-      <li>Farmer</li>
-      <li>Hunter</li>
-      <li>Woodcutter</li>
-      <li>Fisherman</li>
-      <li>Builder</li>
-    </ul>
-  </div>
-
-  <div class="title2">Cara Mendapatkan Uang dari Jobs</div>
-  <div class="text">Setelah bergabung dengan pekerjaan, kamu tinggal main seperti biasa!  
-    <ul>
-      <li>Mining block = dapat koin (kalau miner)</li>
-      <li>Farming crops = dapat koin (kalau farmer)</li>
-      <li>Kill mob = dapat koin (kalau hunter)</li>
-    </ul>
-  </div>
-
-  <div class="tip-box">
-    <strong>Tip:</strong> Kamu bisa gabung lebih dari 1 pekerjaan (maksimal sesuai aturan server). Coba cari kombinasi yang cocok!
-  </div>
-
-  <div class="text">Kerja, main, dan kumpulkan koin di Mineplix dengan JobsReborn. Jadi miner, farmer, hunter, atau lainnya? Semua pilihan ada di tanganmu!</div>
-
-  <div class="faq-card">
-    <div class="faq-question">Bagaimana cara bergabung dengan pekerjaan? <i class="fas fa-chevron-down"></i></div>
-    <div class="faq-answer">
-      Gunakan <code>/jobs browse</code> untuk lihat daftar pekerjaan, lalu <code>/jobs join &lt;nama-job&gt;</code> untuk bergabung.
-    </div>
-  </div>
-
-  <div class="faq-card">
-    <div class="faq-question">Apa keuntungan dari sistem Jobs? <i class="fas fa-chevron-down"></i></div>
-    <div class="faq-answer">
-      Setiap aktivitas di pekerjaan akan memberikan koin tambahan, seperti mining, farming, atau hunting.
-    </div>
-  </div>
-
-  <div class="faq-card">
-    <div class="faq-question">Berapa banyak pekerjaan yang bisa diambil? <i class="fas fa-chevron-down"></i></div>
-    <div class="faq-answer">
-      Tergantung pengaturan server. Biasanya 2-3 pekerjaan bisa diambil sekaligus.
-    </div>
-  </div>
-<hr></div>
-
 </div><script>
 const menuToggle=document.getElementById("menuToggle"),slideMenu=document.getElementById("slideMenu"),menuOverlay=document.getElementById("menuOverlay");let isMenuOpen=!1;menuToggle.addEventListener("click",e=>{e.stopPropagation(),isMenuOpen=!isMenuOpen,slideMenu.classList.toggle("open"),menuOverlay.classList.toggle("show"),menuToggle.innerHTML=isMenuOpen?'<i class="fas fa-xmark"></i>':'<i class="fas fa-bars"></i>'}),document.addEventListener("click",e=>{isMenuOpen&&!slideMenu.contains(e.target)&&!menuToggle.contains(e.target)&&(slideMenu.classList.remove("open"),menuOverlay.classList.remove("show"),isMenuOpen=!1,menuToggle.innerHTML='<i class="fas fa-bars"></i>')});const faqQuestions=document.querySelectorAll(".faq-question");faqQuestions.forEach(e=>{e.addEventListener("click",()=>{const n=e.nextElementSibling,t=e.querySelector("i.fas");if(n.classList.contains("open"))n.classList.remove("open"),t.classList.remove("fa-chevron-up"),t.classList.add("fa-chevron-down");else{document.querySelectorAll(".faq-answer.open").forEach(e=>{e.classList.remove("open"),e.previousElementSibling.querySelector("i.fas").classList.remove("fa-chevron-up"),e.previousElementSibling.querySelector("i.fas").classList.add("fa-chevron-down")}),n.classList.add("open"),t.classList.remove("fa-chevron-down"),t.classList.add("fa-chevron-up")}})});
-</script></body></html>
+</script><script>const scrollBtn=document.getElementById("scrollTopBtn"),searchInput=document.getElementById("searchInput"),clearSearch=document.getElementById("clearSearch"),container=document.querySelector(".article-container"),articles=Array.from(container.querySelectorAll(".article"));window.addEventListener("scroll",()=>{scrollBtn.classList.toggle("show",window.scrollY>300)}),scrollBtn.addEventListener("click",()=>{window.scrollTo({top:0,behavior:"smooth"})}),searchInput.addEventListener("input",function(){const e=this.value.toLowerCase();container.innerHTML="";const t=[],n=[];articles.forEach(a=>{const r=a.id.toLowerCase();r.includes(e)?t.push(a):n.push(a)}),[...t,...n].forEach(a=>container.appendChild(a)),clearSearch.style.display=e?"block":"none"}),clearSearch.addEventListener("click",()=>{searchInput.value="",clearSearch.style.display="none",container.innerHTML="",articles.forEach(a=>container.appendChild(a)),searchInput.focus()});</script></body></html>
