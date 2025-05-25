@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+<title>Mineplix - Komunitas Minecraft Server Indonesia</title>
+<meta name="description" content="Mineplix adalah komunitas Minecraft server terbesar di Indonesia, tempat berkumpulnya pemain dan penggemar Minecraft untuk berbagi, bermain, dan bersenang-senang bersama." />
+  <style>
+    body {
+      margin: 0;
+      background-color: #1e1e1e;
+      font-family: Arial, sans-serif;
+      color: #f0f0f0;
+      user-select: none;
+    }
+
+    a {
+      cursor: none;
+    }
+
+    .navbar {
+      background-color: #1e1e1e;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+    }
+
+    .navbar-left {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+.menu-toggle {
+  width: 40px;
+  height: 40px;
+  font-size: 20px;
+  background-color: #2a2a2a;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.15s ease, background-color 0.15s ease;
+}
+
+.menu-toggle:active {
+  transform: scale(0.9);
+  background-color: #3a3a3a;
+}
+
+    .navbar-title {
+      font-size: 20px;
+      font-weight: bold;
+      color: #ffffff;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+.navbar-right {
+  width: 40px;
+  height: 40px;
+  font-size: 20px;
+  background-color: #2a2a2a;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.15s ease, background-color 0.15s ease;
+}
+
+.navbar-right:active {
+  transform: scale(0.9);
+  background-color: #3a3a3a;
+}
+
+    .navbar-center {
+      display: none;
+      gap: 20px;
+      position: relative;
+    }
+
+.navbar-center a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 15px;
+  background-color: #2a2a2a;
+  padding: 8px 12px;
+  border-radius: 6px;
+  transition: transform 0.15s ease, background-color 0.15s ease;
+}
+
+.navbar-center a:active {
+  transform: scale(0.9);
+  background-color: #3a3a3a;
+}
+
+    .slide-menu {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 150px;
+      height: 100%;
+      background-color: #1e1e1e;
+      padding: 80px 15px 15px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      transform: translateX(-100%);
+      transition: transform 0.3s ease;
+      z-index: 999;
+    }
+    
+.menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 998;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.menu-overlay.show {
+  opacity: 1;
+  pointer-events: all;
+}
+
+    .slide-menu.open {
+      transform: translateX(0);
+    }
+
+.slide-menu a,
+.slide-menu .dropdown-toggle {
+  background-color: #2a2a2a;
+  padding: 10px 15px;
+  border-radius: 6px;
+  color: #fff;
+  font-size: 15px;
+  text-decoration: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: transform 0.15s ease, background-color 0.15s ease;
+}
+
+.slide-menu a:active,
+.slide-menu .dropdown-toggle:active {
+  transform: scale(0.9);
+  background-color: #3a3a3a;
+}
+
+    .dropdown {
+      max-height: 0;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      margin-top: 5px;
+      transition: max-height 0.3s ease;
+    }
+
+    .dropdown.open {
+      max-height: 300px;
+    }
+
+    .dropdown a {
+      background-color: #333;
+      padding: 10px 15px;
+      border-radius: 6px;
+      font-size: 14px;
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .card-list-container {
+      padding: 85px 15px 20px;
+    }
+
+    .card-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .card {
+      width: calc(33.333% - 13.33px);
+      overflow: hidden;
+      transition: transform 0.15s ease, background-color 0.15s ease;
+    }
+    
+    .card:active {
+     transform: scale(0.98);
+    }
+
+    .card img {
+      width: 100%;
+    }
+
+    .card-content {
+      padding: 5px 0;
+    }
+
+    .card-title {
+      font-size: 16px;
+      font-weight: bold;
+      color: #e0e0e0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .card-meta {
+      font-size: 12px;
+      color: #aaa;
+      margin-top: 5px;
+    }
+
+    .card-info-icon {
+      font-size: 14px;
+      color: #888;
+    }
+
+    @media (max-width: 768px) {
+      .card {
+        width: 100%;
+      }
+    }
+
+    @media (min-width: 768px) {
+      .navbar-title {
+      font-size: 20px;
+      font-weight: bold;
+      color: #ffffff;
+      left: 15px;
+      transform: none;
+    }
+      .navbar-center {
+        display: flex;
+      }
+
+      .menu-toggle,
+      .slide-menu {
+        display: none;
+      }
+    }
+
+.slide-menu a {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.slide-menu a i {
+  margin-right: 10px;
+  border-right: 1px solid #ccc;
+  padding-right: 10px;
+}
+
+.slide-menu a span {
+  flex: 1;
+  text-align: justify;
+}
+  </style>
+</head>
+<body>
+
+<div class="slide-menu" id="slideMenu"><a href="artikel.html"><i class="fa fa-book"></i><span>Infotutorial</span></a><a href="/pengetahuan"><i class="fa fa-info-circle"></i><span>Pengetahuan</span></a><a href="/pembaruan"><i class="fa fa-calendar"></i><span>Pembaruan</span></a><a href="/marketplace"><i class="fa fa-store"></i><span>Marketplace</span></a><a href="/leaderboard"><i class="fa fa-trophy"></i><span>Leaderboard</span></a></div>
+<div class="menu-overlay" id="menuOverlay"></div>
+
+<div class="navbar"><div class="navbar-left"><div class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></div><div class="navbar-title">MINEPLIX</div></div>
+<div class="navbar-center"><a href="/tutorial">Infotutorial</a><a href="/pengetahuan">Pengetahuan</a><a href="/pembaruan">Pembaruan</a><a href="/marketplace">Marketplace</a><a href="/leaderboard">Leaderboard</a></div><div class="navbar-right"><i class="fas fa-store" onclick="location.href='/marketplace'"></i></div></div>
+
+<div class="card-list-container"><div class="card-list">
+ 
+<div class="card" onclick="location.href='/article/plixsmp-news.html'"><img src="contoh.webp" alt="Card Image"><div class="card-content"><div class="card-title">PLIXSMP news of generasi to MINEPLIX<i class="fas fa-thumbtack card-info-icon"></i></div><div class="card-meta">contoh | coming soon</div></div></div>
+
+<div class="card" onclick="location.href='/article/lobby-arena-news.html'"><img src="contoh.webp" alt="Card Image"><div class="card-content"><div class="card-title">The News of build lobby arena and more<i class="fas fa-info card-info-icon"></i></div><div class="card-meta">contoh | coming soon</div></div></div>
+
+<div class="card" onclick="location.href='/article/fitur-plixmine.html'"><img src="contoh.webp" alt="Card Image"><div class="card-content"><div class="card-title">What news coming fitur for PLIXMINE!<i class="fas fa-info card-info-icon"></i></div><div class="card-meta">contoh | coming soon</div></div></div>
+ 
+</div></div>
+
+<script>const menuToggle=document.getElementById('menuToggle'),slideMenu=document.getElementById('slideMenu'),menuOverlay=document.getElementById('menuOverlay');let isMenuOpen=!1;menuToggle.addEventListener('click',e=>{e.stopPropagation(),isMenuOpen=!isMenuOpen,slideMenu.classList.toggle('open'),menuOverlay.classList.toggle('show'),menuToggle.innerHTML=isMenuOpen?'<i class="fas fa-xmark"></i>':'<i class="fas fa-bars"></i>'}),document.addEventListener('click',e=>{isMenuOpen&&!slideMenu.contains(e.target)&&!menuToggle.contains(e.target)&&(slideMenu.classList.remove('open'),menuOverlay.classList.remove('show'),isMenuOpen=!1,menuToggle.innerHTML='<i class="fas fa-bars"></i>')});</script>
+</body>
+</html>
