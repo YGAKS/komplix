@@ -279,7 +279,7 @@
   background-color: rgba(90, 180, 248, 0.1);
   border-left: 4px solid #5ab4f8;
   padding: 10px 15px;
-  margin: 70px 15px 10px 15px;
+  margin: 80px 15px 10px 15px;
   font-size: 12px;
   color: #b0dfff;
   user-select: none;
@@ -288,6 +288,47 @@
 .tip-box a {
   color: #007bff;
   text-decoration: underline;
+}
+.footer {
+  padding: 15px;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.footer-content {
+  display: flex;
+  color: #555;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.footer-title {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.footer-desc {
+  font-size: 12px;
+  color: #555;
+  text-align: center;
+}
+
+.footer-icons {
+  display: flex;
+  gap: 15px;
+}
+
+.footer-icons a {
+  color: #555;
+  font-size: 20px;
+  text-decoration: none;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.footer-icons a:hover {
+  transform: scale(1.1);
+  color: #555555;
 }
   </style>
 </head>
@@ -311,6 +352,8 @@
 <div class="card" onclick="location.href='/article/fitur-plixmine.html'"><img src="contoh.webp" alt="Card Image"><div class="card-content"><div class="card-title">What news coming fitur for PLIXMINE!<i class="fas fa-info card-info-icon"></i></div><div class="card-meta">contoh | coming soon</div></div></div>
  
 </div></div>
+
+<footer class="footer"><div class="footer-content"><div class="footer-title">MINEPLIX MINECRAFT SERVER</div><div class="footer-desc">© 2025 MINEPLIX. All Rights Reserved. Not an official Minecraft product. Not approved by or associated with Mojang.</div><div class="footer-icons"><a href="https://discord.gg/NANMb6ZNHs" aria-label="Discord"><i class="fab fa-discord"></i></a></div></div></footer>
 
 <script>const menuToggle=document.getElementById("menuToggle"),slideMenu=document.getElementById("slideMenu"),menuOverlay=document.getElementById("menuOverlay");let isMenuOpen=!1;menuToggle.addEventListener("click",e=>{e.stopPropagation(),isMenuOpen=!isMenuOpen,slideMenu.classList.toggle("open"),menuOverlay.classList.toggle("show"),menuToggle.innerHTML=isMenuOpen?'<i class="fas fa-xmark"></i>':'<i class="fas fa-bars"></i>'}),document.addEventListener("click",e=>{isMenuOpen&&!slideMenu.contains(e.target)&&!menuToggle.contains(e.target)&&(slideMenu.classList.remove("open"),menuOverlay.classList.remove("show"),isMenuOpen=!1,menuToggle.innerHTML='<i class="fas fa-bars"></i>')}),window.addEventListener("pageshow",()=>{slideMenu.classList.remove("open"),menuOverlay.classList.remove("show"),isMenuOpen=!1,menuToggle.innerHTML='<i class="fas fa-bars"></i>'});</script>
 </body>
