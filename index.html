@@ -2,359 +2,959 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-
-<title>Mineplix - Komunitas Minecraft Server Indonesia</title>
-<meta name="description" content="Mineplix adalah komunitas Minecraft server terbesar di Indonesia, tempat berkumpulnya pemain dan penggemar Minecraft untuk berbagi, bermain, dan bersenang-senang bersama." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Minetist - Store Minecraft and design for games and community</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   <style>
-    body {
+    * {
       margin: 0;
-      background-color: #1e1e1e;
-      font-family: Arial, sans-serif;
-      color: #f0f0f0;
-      user-select: none;
+      padding: 0;
+      box-sizing: border-box;
     }
+    
+::selection {
+  background-color: #ff4d4d;
+  color: white;
+}
 
-    a {
-      cursor: none;
+::-moz-selection {
+  background-color: #ff4d4d;
+  color: white;
+}
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #121212;
+      color: #ffffff;
     }
 
     .navbar {
-      background-color: #1e1e1e;
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      padding: 15px;
+      justify-content: space-between;
+      padding: 20px 25px;
+      margin: 0 auto;
       position: fixed;
-      top: 0;
       left: 0;
       right: 0;
-      z-index: 1000;
+      top: 0;
+      z-index: 1700;
+      background: rgba(0, 0, 0, 0.1);
+    }
+    
+    .navbar.scrolled {
+      background: #121212;
     }
 
-    .navbar-left {
+.logo {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  font-size: 22px;
+  gap: 5px;
+  margin-left: -6px;
+}
+
+.navbar img {
+  width: 35px;
+  height: 35px;
+}
+
+    .nav-links {
       display: flex;
-      align-items: center;
-      gap: 15px;
-    }
-
-.menu-toggle {
-  width: 40px;
-  height: 40px;
-  font-size: 20px;
-  background-color: #2a2a2a;
-  border-radius: 6px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform 0.15s ease, background-color 0.15s ease;
-}
-
-.menu-toggle:active {
-  transform: scale(0.9);
-  background-color: #3a3a3a;
-}
-
-    .navbar-title {
-      font-size: 20px;
-      font-weight: bold;
-      color: #ffffff;
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-
-.navbar-right {
-  width: 40px;
-  height: 40px;
-  font-size: 20px;
-  background-color: #2a2a2a;
-  border-radius: 6px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform 0.15s ease, background-color 0.15s ease;
-}
-
-.navbar-right:active {
-  transform: scale(0.9);
-  background-color: #3a3a3a;
-}
-
-    .navbar-center {
-      display: none;
-      gap: 20px;
+      gap: 24px;
       position: relative;
     }
 
-.navbar-center a {
-  color: #fff;
-  text-decoration: none;
-  font-size: 15px;
-  background-color: #2a2a2a;
-  padding: 8px 12px;
-  border-radius: 6px;
-  transition: transform 0.15s ease, background-color 0.15s ease;
-}
+    .nav-item {
+      position: relative;
+      display: inline-block;
+      width: auto;
+    }
 
-.navbar-center a:active {
-  transform: scale(0.9);
-  background-color: #3a3a3a;
-}
-
-    .slide-menu {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 150px;
-      height: 100%;
-      background-color: #1e1e1e;
-      padding: 80px 15px 15px;
+    .nav-item > span {
+      color: #ffffff;
+      padding: 8px 12px;
+      font-size: 16px;
+      transition: background-color 0.2s;
+      border-radius: 16px;
       display: flex;
-      flex-direction: column;
-      gap: 10px;
-      transform: translateX(-100%);
-      transition: transform 0.3s ease;
-      z-index: 999;
-    }
-    
-.menu-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 998;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease;
-}
-
-.menu-overlay.show {
-  opacity: 1;
-  pointer-events: all;
-}
-
-    .slide-menu.open {
-      transform: translateX(0);
+      align-items: center;
+      gap: 6px;
     }
 
-.slide-menu a,
-.slide-menu .dropdown-toggle {
-  background-color: #2a2a2a;
-  padding: 10px 15px;
-  border-radius: 6px;
-  color: #fff;
-  font-size: 15px;
-  text-decoration: none;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  transition: transform 0.15s ease, background-color 0.15s ease;
-}
-
-.slide-menu a:active,
-.slide-menu .dropdown-toggle:active {
-  transform: scale(0.9);
-  background-color: #3a3a3a;
-}
+    .nav-item > span:hover {
+      background-color: #2563eb;
+    }
 
     .dropdown {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 16px;
+      transform-origin: top;
+      opacity: 0;
       max-height: 0;
       overflow: hidden;
+      pointer-events: none;
+      transition: all 0.3s ease;
+    }
+
+    .dropdown.show {
+      opacity: 1;
+      pointer-events: auto;
+      max-height: 500px;
+      padding: 8px 0;
+      margin-top: 25px;
+    }
+
+    .dropdown span {
+      display: block;
+      padding: 8px 16px;
+      margin: 5px;
+      white-space: nowrap;
+      font-size: 15px;
+      border-radius: 16px;
+    }
+
+    .dropdown span:hover {
+      background: #2563eb;
+    }
+
+    .nav-item i {
+      transition: transform 0.3s ease;
+      margin-left: 10px;
+    }
+
+    .nav-item i.up {
+      transform: rotate(180deg);
+    }
+
+    .menu-toggle {
+      display: none;
+    }
+
+    .menu-toggle img {
+      width: 20px;
+      height: 20px;
+      filter: brightness(0) invert(1);
+      transition: opacity 0.3s ease;
+    }
+
+.hero {
+  position: relative;
+  background: url('map.png') no-repeat center center;
+  background-size: cover;
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px;
+  text-align: center;
+  padding-top: 120px;
+  z-index: 0;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: brightness(0.7);
+  z-index: -1;
+}
+
+    .hero-content {
+      max-width: 700px;
+    }
+
+    .badge {
+      background: #fff;
+      color: #333;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 14px;
+      display: inline-block;
+      margin-bottom: 16px;
+      text-align: center;
+    }
+
+    h1#dynamicText {
+      font-size: 40px;
+      font-weight: bold;
+      margin-bottom: 16px;
+      min-height: 48px;
+      transition: opacity 0.3s ease;
+    }
+
+    p {
+      font-size: 16px;
+      color: #cccccc;
+      margin-bottom: 24px;
+    }
+
+    .cta {
+      color: #ffffff;
+      border: 2px #fff solid;
+      background-color: transparent;
+      padding: 12px 24px;
+      font-size: 16px;
+      border-radius: 20px;
+      display: inline-block;
+      transition: background-color 0.3s ease;
+    }
+
+    .cta:hover {
+      background: #fff;
+      color: #333;
+    }
+
+  .faq {
+    max-width: 1000px;
+    background: radial-gradient(circle at center, #2a2a2a 0%, #121212 90%);
+    margin: 40px auto;
+    padding: 5px 15px;
+    text-align: center;
+  }
+  
+  .faq-title {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 30px;
+  }
+  .faq-item {
+    margin-bottom: 10px;
+    font-size: 12px;
+    text-align: left;
+  }
+  .faq-question {
+    background: #333;
+    border-radius: 16px;
+    padding: 14px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .faq-question i {
+    font-size: 18px;
+    color: #fff;
+    transition: transform 0.3s ease;
+  }
+  .faq-answer{
+    height: 0;
+    opacity: 0;
+    overflow: hidden;
+    background: #eee;
+    border-radius: 12px;
+    margin-top: 10px;
+  }
+  .faq-answer p {
+    font-size: 12px;
+    padding: 10px;
+    color: #333;
+  }
+  
+    .container-service {
+      text-align: center;
+      padding: 2rem 1rem;
+      margin-top: -80px;
+    }
+
+    .section-service {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .section-service-card {
+      background: linear-gradient(to bottom, #1c1c1c, #121212);
+      border-radius: 16px;
+      padding: 1.2rem 1.5rem;
+      display: flex;
+      align-items: center;
+      text-align: left;
+      gap: 1.2rem;
+      z-index: 1;
+    }
+
+    .section-service-icon {
+      font-size: 25px;
+      flex-shrink: 0;
+      filter: brightness(0) invert(1);
+    }
+
+    .divider {
+      width: 1px;
+      height: 48px;
+      background: #333;
+    }
+
+    .section-service-content {
       display: flex;
       flex-direction: column;
-      gap: 5px;
-      margin-top: 5px;
-      transition: max-height 0.3s ease;
     }
 
-    .dropdown.open {
-      max-height: 300px;
-    }
-
-    .dropdown a {
-      background-color: #333;
-      padding: 10px 15px;
-      border-radius: 6px;
+    .section-service-title {
       font-size: 14px;
-      color: #fff;
-      text-decoration: none;
+      font-weight: 600;
+      margin-bottom: 0.3rem;
     }
 
-    .card-list-container {
-      padding: 10px 15px 20px;
-    }
-
-    .card-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-    }
-
-    .card {
-      width: calc(33.333% - 13.33px);
-      overflow: hidden;
-      transition: transform 0.15s ease, background-color 0.15s ease;
-    }
-    
-    .card:active {
-     transform: scale(0.98);
-    }
-
-    .card img {
-      width: 100%;
-    }
-
-    .card-content {
-      padding: 5px 0;
-    }
-
-    .card-title {
-      font-size: 16px;
-      font-weight: bold;
-      color: #e0e0e0;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .card-meta {
+    .section-service-desc {
       font-size: 12px;
-      color: #aaa;
-      margin-top: 5px;
-    }
-
-    .card-info-icon {
-      font-size: 14px;
-      color: #888;
+      color: #ccc;
+      line-height: 1.5;
     }
 
     @media (max-width: 768px) {
-      .card {
+      .nav-links {
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        right: 20px;
+        background: rgba(30, 30, 30, 0.95);
+        padding: 12px 16px;
+        border-radius: 16px;
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(-10px);
+        transition: all 0.3s ease;
+        width: auto;
+        gap: 0;
+      }
+
+      .nav-links.show {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateY(0);
+      }
+
+      .nav-item {
         width: 100%;
+        margin-bottom: 6px;
+      }
+
+      .nav-item > span {
+        justify-content: space-between;
+        width: 100%;
+        padding: 10px;
+        border-radius: 16px;
+      }
+
+      .dropdown {
+        position: static;
+        max-height: 0;
+        margin-top: 0;
+        overflow: hidden;
+        transition: all 0.3s ease;
+      }
+
+      .dropdown.show {
+        max-height: 300px;
+        margin-top: 5px;
+      }
+
+      .dropdown span {
+        padding: 10px;
+        font-size: 15px;
+      }
+
+      .menu-toggle {
+        display: block;
       }
     }
+    
+    .plans-container {
+      margin: auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      color: #eee;
+    }
 
-    @media (min-width: 768px) {
-      .navbar-title {
-      font-size: 20px;
+    .plans-card {
+      background-color: #121212;
+      width: 340px;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .plans-top {
+      display: flex;
+      align-items: center;
+      padding: 15px 0;
+      border-radius: 16px 16px 0 0;
+      background: linear-gradient(to bottom, #1c1c1c, #121212);
+    }
+
+    .plans-img {
+      width: 25px;
+      height: 25px;
+      object-fit: contain;
+      margin: 0 20px;
+      filter: brightness(0) saturate(100%) invert(100%);
+    }
+    
+    .plans-divider {
+      width: 1px;
+      height: 48px;
+      background: #333;
+      margin-right: 10px;
+    }
+
+    .plans-text-group {
+      flex: 1;
+    }
+
+    .plans-text-group h2 {
+      font-size: 14px;
+      margin: 0;
+    }
+
+    .plans-text-group .plans-recommend {
+      font-size: 12px;
+      color: #ccc;
+      margin-top: 4px;
+    }
+
+    .plans-desc {
+      color: #aaa;
+      background-color: #333;
+      padding: 12px;
+      font-size: 14px;
+      line-height: 1.6;
+      min-height: 80px;
+    }
+
+    .plans-price {
+      font-size: 10px;
+      color: #ccc;
+    }
+
+    .plans-price b {
       font-weight: bold;
+      color: #fff;
+    }
+
+    .plans-btn {
+      display: block;
+      width: 100%;
+      border: 2px solid #fff;
+      color: #fff;
+      padding: 12px 0;
+      border-radius: 20px;
+      font-size: 14px;
+      text-align: center;
+      transition: background-color 0.3s ease;
+    }
+    .plans-btn:hover {
+      background-color: #fff;
+      color: #333;
+    }
+    .section-title {
+      text-align: center;
+    }
+    
+    footer {
+      background: #1E1E1E;
+      padding: 40px 20px 20px;
+    }
+
+    .footer-container {
+      max-width: 1000px;
+      padding: 0 10px;
+      margin: auto;
+    }
+
+    .footer-top {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      margin-bottom: 10px;
+    }
+
+    .footer-top img {
+      width: 30px;
+      height: 30px;
+    }
+
+    .footer-top h1 {
+      font-size: 17px;
+      font-weight: bold;
+    }
+
+    .footer-description {
+      font-size: 14px;
+      color: #cccccc;
+      margin: 10px 0 20px;
+    }
+
+    .newsletter {
+      display: flex;
+      align-items: stretch;
+      background-color: #2b2b2b;
+      border-radius: 6px;
+      max-width: 100%;
+      height: 42px;
+      overflow: hidden;
+      margin-top: 20px;
+    }
+
+    .newsletter input {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      outline: none;
+      font-size: 14px;
+      background-color: transparent;
       color: #ffffff;
-      left: 15px;
-      transform: none;
-    }
-      .navbar-center {
-        display: flex;
-      }
-
-      .menu-toggle,
-      .slide-menu {
-        display: none;
-      }
     }
 
-.slide-menu a {
-  display: flex;
-  align-items: center;
-  padding: 10px;
-  text-decoration: none;
-  color: inherit;
-}
+    .send-btn {
+      background-color: #ffffff;
+      color: #333;
+      width: 42px;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 0.2s ease;
+    }
 
-.slide-menu a i {
-  margin-right: 10px;
-  border-right: 1px solid #ccc;
-  padding-right: 10px;
-}
+    .send-btn:hover {
+      background-color: #f0f0f0;
+    }
 
-.slide-menu a span {
-  flex: 1;
-  text-align: justify;
-}
+    .send-btn i {
+      font-size: 16px;
+      color: #333;
+    }
 
-.tip-box {
-  background-color: rgba(90, 180, 248, 0.1);
-  border-left: 4px solid #5ab4f8;
-  padding: 10px 15px;
-  margin: 80px 15px 10px 15px;
-  font-size: 12px;
-  color: #b0dfff;
-  user-select: none;
-  text-align: center;
-}
-.tip-box a {
-  color: #007bff;
-  text-decoration: underline;
-}
-.footer {
-  padding: 15px;
-  text-align: center;
-  margin-top: 10px;
-}
+    .footer-links {
+      margin-top: 25px;
+    }
 
-.footer-content {
-  display: flex;
-  color: #555;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-}
+    .footer-links a {
+      display: inline-block;
+      margin-right: 15px;
+      font-size: 14px;
+      color: #bbbbbb;
+      text-decoration: none;
+    }
 
-.footer-title {
-  font-weight: bold;
-  font-size: 16px;
-}
+    .footer-links a:hover {
+      text-decoration: underline;
+    }
 
-.footer-desc {
-  font-size: 12px;
-  color: #555;
-  text-align: center;
-}
+    .footer-bottom {
+      margin-top: 20px;
+      padding-top: 10px;
+      border-top: 1px solid #444;
+      font-size: 13px;
+      color: #888;
+    }
 
-.footer-icons {
-  display: flex;
-  gap: 15px;
-}
+    @media (max-width: 600px) {
+      .footer-top h2 {
+        font-size: 18px;
+      }
 
-.footer-icons a {
-  color: #555;
-  font-size: 20px;
-  text-decoration: none;
-  transition: transform 0.2s ease, color 0.2s ease;
-}
+      .footer-description {
+        font-size: 13px;
+      }
 
-.footer-icons a:hover {
-  transform: scale(1.1);
-  color: #555555;
-}
+      .footer-links a {
+        font-size: 13px;
+        margin-right: 10px;
+      }
+
+      .footer-bottom {
+        font-size: 12px;
+      }
+
+      .newsletter {
+        width: 100%;
+        flex-direction: row;
+      }
+
+      .send-btn {
+        padding: 0 12px;
+      }
+    }
   </style>
 </head>
 <body>
 
-<div class="slide-menu" id="slideMenu"><a href="/tutorial"><i class="fa fa-book"></i><span>Infotutorial</span></a><a href="/pengetahuan"><i class="fa fa-info-circle"></i><span>Pengetahuan</span></a><a href="/marketplace"><i class="fa fa-store"></i><span>Marketplace</span></a><a href="/leaderboard"><i class="fa fa-trophy"></i><span>Leaderboard</span></a></div>
-<div class="menu-overlay" id="menuOverlay"></div>
+  <header class="navbar" id="navbar">
+    <div class="logo">
+        <img src="minetist.png" alt="Logo" />MINETIST</div>
+    <nav class="nav-links" id="navMenu">
+      <span class="nav-item"><span onclick="navigateTo('/')">Home</span></span>
+      <span class="nav-item"><span onclick="navigateTo('/info/terms.html')">Terms</span></span>
+      <span class="nav-item"><span onclick="navigateTo('/info')">About Us</span></span>
+      <span class="nav-item"><span onclick="navigateTo('/hosting')">Hosting</span></span>
+      <span class="nav-item">
+        <span onclick="toggleDropdown(this, 'dropdown-resources')">Layanan<i class="fa-solid fa-chevron-down"></i></span>
+        <div id="dropdown-resources" class="dropdown">
+          <span onclick="navigateTo('/builder')">McBuilder</span>
+          <span onclick="navigateTo('/design')">Design</span>
+          <span onclick="navigateTo('/domain')">Domain</span>
+          <span onclick="navigateTo('/setups')">Setups</span>
+        </div>
+      </span>
+    </nav>
+    <div class="menu-toggle" onclick="toggleMenu()">
+      <img src="icons/more.svg" id="menuIcon" alt="menu" />
+    </div>
+  </header>
 
-<div class="navbar"><div class="navbar-left"><div class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></div><div class="navbar-title">MINEPLIX</div></div>
-<div class="navbar-center"><a href="/tutorial">Infotutorial</a><a href="/pengetahuan">Pengetahuan</a><a href="/marketplace">Marketplace</a><a href="/leaderboard">Leaderboard</a></div><div class="navbar-right"><i class="fas fa-store" onclick="location.href='/marketplace'"></i></div></div>
+  <section class="hero">
+    <div class="hero-content">
+      <div class="badge">Servers Are Available</div>
+      <h1 id="dynamicText">Minecraft Server Hosting</h1>
+      <p>Layanan hosting game untuk Minecraft, GTA, dan bot. Tersedia juga jasa builder lobby, and more, setup server, dan desain grafis untuk komunitasmu.</p>
+      <div class="cta" onclick="scrollToPlans()">Compare Our Plans</div>
+    </div>
+  </section>
+  
+<div class="container-service">
+  <div class="section-service">
 
-<div class="tip-box">sering sering refresh untuk memuat data halaman terbaru <a href="javascript:location.reload()">refresh</a> di halaman manapun tentu nya bukan halaman ini doang.
+    <div class="section-service-card">
+      <div class="section-service-icon"><i class="fa-solid fa-stopwatch"></i>
+      </div>
+      <div class="divider"></div>
+      <div class="section-service-content">
+        <div class="section-service-title">24 Jam Aktif</div>
+        <div class="section-service-desc">Server aktif nonstop, cocok untuk pengguna dari berbagai zona waktu.</div>
+      </div>
+    </div>
+
+    <div class="section-service-card">
+      <div class="section-service-icon"><i class="fa-solid fa-shield-virus"></i>
+      </div>
+      <div class="divider"></div>
+      <div class="section-service-content">
+        <div class="section-service-title">Anti DDoS</div>
+        <div class="section-service-desc">Keamanan maksimal dengan proteksi DDoS tingkat tinggi.</div>
+      </div>
+    </div>
+
+    <div class="section-service-card">
+      <div class="section-service-icon"><i class="fa-solid fa-gauge-high"></i></div>
+      <div class="divider"></div>
+      <div class="section-service-content">
+        <div class="section-service-title">Latency Rendah</div>
+        <div class="section-service-desc">Koneksi cepat dan responsif untuk pengalaman bermain optimal.</div>
+      </div>
+    </div>
+
+    <div class="section-service-card">
+      <div class="section-service-icon"><i class="fa-solid fa-headset"></i></div>
+      <div class="divider"></div>
+      <div class="section-service-content">
+        <div class="section-service-title">Support Cepat</div>
+        <div class="section-service-desc">Tim bantuan responsif siap sedia menjawab pertanyaan Anda.</div>
+      </div>
+    </div>
+
+    <div class="section-service-card">
+      <div class="section-service-icon"><i class="fa-solid fa-database"></i></div>
+      <div class="divider"></div>
+      <div class="section-service-content">
+        <div class="section-service-title">Auto Backup</div>
+        <div class="section-service-desc">Data dunia dan progres pemain dicadangkan secara berkala untuk menghindari kehilangan data.</div>
+      </div>
+    </div>
+
+    <div class="section-service-card">
+      <div class="section-service-icon"><i class="fa-solid fa-shield-halved"></i></div>
+      <div class="divider"></div>
+      <div class="section-service-content">
+        <div class="section-service-title">Garansi Aman</div>
+        <div class="section-service-desc">Server dijalankan dengan standar keamanan tinggi untuk menjaga data dan akses pengguna.</div>
+      </div>
+    </div>
+
+    <div class="section-service-card">
+      <div class="section-service-icon"><i class="fa-solid fa-scale-balanced"></i></div>
+      <div class="divider"></div>
+      <div class="section-service-content">
+        <div class="section-service-title">Pembayaran Adil</div>
+        <div class="section-service-desc">Bayar di pertengahan progres pembuatan berdasarkan pembelian lebih transparan dan fleksibel.</div>
+      </div>
+    </div>
+
+    <div class="section-service-card">
+      <div class="section-service-icon"><i class="fa-solid fa-thumbs-up"></i></div>
+      <div class="divider"></div>
+      <div class="section-service-content">
+        <div class="section-service-title">User Friendly</div>
+        <div class="section-service-desc">Antarmuka dan sistem dibuat mudah digunakan untuk pemula maupun pemain berpengalaman.</div>
+      </div>
+    </div>
+
+  </div>
 </div>
+    <div class="section-title">
+<div class="badge">what plans do you want?</div></div>
+  <div class="plans-container" id="plans">
+    <div class="plans-card">
+      <div class="plans-top">
+        <img src="icons/builder.svg" alt="Builder" class="plans-img">
+        <div class="plans-divider"></div>
+        <div class="plans-text-group">
+          <h2>Builder Minecraft</h2>
+          <p class="plans-recommend">Build arena pvp games contoh skywars dsb dan lobby mu lebih menarik!</p>
+        </div>
+      </div>
+      <div class="plans-desc">
+        Butuh map custom atau struktur megah? Tim builder kami siap wujudkan dunia Minecraft impian kamu, dari dekorasi hingga desain map profesional.
+      </div>
+      <div class="plans-price">Harga mulai <b>Rp 10.000</b> Harga tergantung performa dan kesulitan</div>
+      <div class="plans-btn" onclick="window.location.href='/builder'">Learn More</div>
+    </div>
+    <div class="plans-card">
+      <div class="plans-top">
+        <img src="icons/design.svg" alt="Design" class="plans-img">
+        <div class="plans-divider"></div>
+        <div class="plans-text-group">
+          <h2>Desain Grafis</h2>
+          <p class="plans-recommend">Buat design menarik untuk promosi, banner logo hingga resourcepacks mc sever mu!</p>
+        </div>
+      </div>
+      <div class="plans-desc">
+        Logo premium, UI modern, dan elemen grafis yang bikin server kamu tampil beda. atau design untuk resourcpacks atau lainya seperti banner dsb.
+      </div>
+      <div class="plans-price">Harga mulai <b>Rp 5.000</b> Harga tergantung performa dan kesulitan</div>
+      <div class="plans-btn" onclick="window.location.href='/design'">Learn More</div>
+    </div>
+    <div class="plans-card">
+      <div class="plans-top">
+        <img src="icons/gear.svg" alt="Setup" class="plans-img">
+        <div class="plans-divider"></div>
+        <div class="plans-text-group">
+          <h2>Setup Mc & Bot</h2>
+          <p class="plans-recommend">Butuh bantuan setup? plugins, berbagai config contoh deluxmenus dsb?</p>
+        </div>
+      </div>
+      <div class="plans-desc">
+        Biarkan kami bantu pasang plugin, setup Discord/WA bot, dan konfigurasi server kamu. Praktis, tinggal pakai, cocok buat pemula maupun expert.
+      </div>
+      <div class="plans-price">Harga mulai <b>Rp 5.000</b> Harga tergantung performa dan kesulitan</div>
+      <div class="plans-btn" onclick="window.location.href='/setups'">Learn More</div>
+    </div>
+    <div class="plans-card">
+      <div class="plans-top">
+        <img src="icons/home.svg" alt="Hosting" class="plans-img">
+        <div class="plans-divider"></div>
+        <div class="plans-text-group">
+          <h2>Hosting Minecraft</h2>
+          <p class="plans-recommend">Mencari kebutuhan hosting game contoh Minecraft dan sebaggai nya!</p>
+        </div>
+      </div>
+      <div class="plans-desc">
+        Layanan hosting berkualitas dengan uptime tinggi, keamanan ddos monitoring hingga optimal user friendly. Cocok untuk server publik maupun private.
+      </div>
+      <div class="plans-price">Harga mulai <b>Rp 10.000</b> Harga tergantung performa dan kesulitan</div>
+      <div class="plans-btn" onclick="window.location.href='/hosting'">Learn More</div>
+    </div>
 
-<div class="card-list-container"><div class="card-list">
- 
-<div class="card" onclick="location.href='/article/plixsmp-news.html'"><img src="contoh.webp" alt="Card Image"><div class="card-content"><div class="card-title">PLIXSMP news of generasi to MINEPLIX<i class="fas fa-thumbtack card-info-icon"></i></div><div class="card-meta">contoh | coming soon</div></div></div>
+  </div>
 
-<div class="card" onclick="location.href='/article/lobby-arena-news.html'"><img src="contoh.webp" alt="Card Image"><div class="card-content"><div class="card-title">The News of build lobby arena and more<i class="fas fa-info card-info-icon"></i></div><div class="card-meta">contoh | coming soon</div></div></div>
+  <div class="faq">
+       <div class="badge">Do You Have Any Questions?</div>
+    <div class="faq-title">Frequently Asked Questions</div>
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this)"> Bagaimana cara pembayaran dan menerima pembayaran apa sajah?
+        <i class="fa fa-plus"></i>
+      </div>
+      <div class="faq-answer">
+        <p><b>a</b> : kami dengan adil pembayaran di lakukan ketika pembuatan contoh design nah nanti di buat dulu pas udah 50% nah baru pembayaran untuk menuntaskan pesanannya <small>*Terkecuali kalo kaya produk siap jadi itu langsung pembayaran di awal baru kami memberikan produk nya langsung</small><br><b>q</b> : Menerima pembayaran apa sajah? <b>a</b> : Tentunya berbagai pembayaran non tunai seperti dana,gopay,bank hingga qris</p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        Bagaimana progres pembuatan nya dan keuntungan nya di minetist?.
+        <i class="fa fa-plus"></i>
+      </div>
+      <div class="faq-answer">
+        <p>Kami akan sebisa mungkin pertanyaan anda terjawab dengan baik progres akan di beri tahu jika anda ingin mengetahui nya! kami menerima revisi atau tambahan sesuatu tergantung plans nya sesuai yah! kami menerima hingga 3x revisi untuk design <small>*Terkecuali yang lainya tergantung.</small></p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this)">
+       Bagaimana cara hosting nya bekerja? dan kelebihan minetist!
+        <i class="fa fa-plus"></i>
+      </div>
+      <div class="faq-answer">
+        <p>Hosting game berbagai keuntungan sesuai perfomance kami akan memisahkan tingkatan dari shared hingga private kami akan monitoring untuk memaksikan aman dari serangan DDOS dan serangan lainya walaupun udsh tersedia ottomatis tapi kami akan tetap memastikan takut ada kesalahan sistem nya dan kami akan membackup data anda setiap saat jam backup sekitar malam 00:00 - 01:00</p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        Bagaimana dengan kalo kaya custom pesanan apakah akan di jual kembali?
+        <i class="fa fa-plus"></i>
+      </div>
+      <div class="faq-answer">
+        <p><b>Jawaban nya tidak</b> kami tidak akan menjual kembali jika anda memesan custom jadi aman kecuali ada tag publik nyah! kami selalu jadi anda tidak perlu menghawatirkan itu kami akan menjaga privasi pelanggan adalah raja yang baik mematuhi kebijakan kami terimakasih!</p>
+      </div>
+    </div>
+  </div>
+  
+  
+  <footer>
+    <div class="footer-container">
 
-<div class="card" onclick="location.href='/article/fitur-plixmine.html'"><img src="contoh.webp" alt="Card Image"><div class="card-content"><div class="card-title">What news coming fitur for PLIXMINE!<i class="fas fa-info card-info-icon"></i></div><div class="card-meta">contoh | coming soon</div></div></div>
- 
-</div></div>
+      <div class="footer-top">
+        <img src="minetist.png" alt="Logo" />
+        <h1>MINETIST</h1>
+      </div>
 
-<footer class="footer"><div class="footer-content"><div class="footer-title">MINEPLIX MINECRAFT SERVER</div><div class="footer-desc">© 2025 MINEPLIX. All Rights Reserved. Not an official Minecraft product. Not approved by or associated with Mojang.</div><div class="footer-icons"><a href="https://discord.gg/NANMb6ZNHs" aria-label="Discord"><i class="fab fa-discord"></i></a></div></div></footer>
+      <p class="footer-description">
+        MINETIST adalah penyedia layanan Builder Minecraft, Desain, Setup server, dan Hosting Game dengan kualitas profesional dan harga terjangkau.
+      </p>
 
-<script>const menuToggle=document.getElementById("menuToggle"),slideMenu=document.getElementById("slideMenu"),menuOverlay=document.getElementById("menuOverlay");let isMenuOpen=!1;menuToggle.addEventListener("click",e=>{e.stopPropagation(),isMenuOpen=!isMenuOpen,slideMenu.classList.toggle("open"),menuOverlay.classList.toggle("show"),menuToggle.innerHTML=isMenuOpen?'<i class="fas fa-xmark"></i>':'<i class="fas fa-bars"></i>'}),document.addEventListener("click",e=>{isMenuOpen&&!slideMenu.contains(e.target)&&!menuToggle.contains(e.target)&&(slideMenu.classList.remove("open"),menuOverlay.classList.remove("show"),isMenuOpen=!1,menuToggle.innerHTML='<i class="fas fa-bars"></i>')}),window.addEventListener("pageshow",()=>{slideMenu.classList.remove("open"),menuOverlay.classList.remove("show"),isMenuOpen=!1,menuToggle.innerHTML='<i class="fas fa-bars"></i>'});</script>
+      <div class="newsletter">
+        <input type="email" id="emailInput" placeholder="Masukkan email Anda" />
+        <div class="send-btn">
+          <i class="fa-solid fa-envelope-circle-check"></i>
+        </div>
+      </div>
+
+      <div class="footer-links">
+        <a href="/info">About us</a>
+        <a href="/info/terms.html">Terms of Service</a>
+        <a href="/hosting">Hosting</a>
+        <a href="/builder">BuilderMc</a>
+        <a href="/design">Design</a>
+        <a href="/setups">Setups Sever</a>
+      </div>
+
+      <div class="footer-bottom">
+        © MINETIST 2025
+      </div>
+
+    </div>
+  </footer>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const phrases = [
+    "Minecraft Server Hosting",
+    "McBuilder Your Server Mc",
+    "Setup Your Bot for community",
+    "Design personal branding"
+  ];
+  let phraseIndex = 0;
+  const textElement = document.getElementById("dynamicText");
+
+  setInterval(() => {
+    textElement.style.opacity = 0;
+    setTimeout(() => {
+      phraseIndex = (phraseIndex + 1) % phrases.length;
+      textElement.textContent = phrases[phraseIndex];
+      textElement.style.opacity = 1;
+    }, 300);
+  }, 4000);
+
+  const navbar = document.getElementById("navbar");
+  window.addEventListener("scroll", () => {
+    navbar.classList.toggle("scrolled", window.scrollY > 10);
+  });
+
+  document.querySelector(".send-btn")?.addEventListener("click", () => {
+    const email = document.getElementById("emailInput").value;
+    const mailtoLink = `mailto:plixbantuan@gmail.com?subject=Langganan%20Newsletter&body=Email%20saya%20adalah:%20${encodeURIComponent(email)}`;
+    window.location.href = mailtoLink;
+  });
+
+  window.addEventListener("click", e => {
+    if (!e.target.closest(".nav-item")) {
+      document.querySelectorAll(".dropdown").forEach(d => d.classList.remove("show"));
+      document.querySelectorAll(".nav-item i").forEach(i => i.classList.remove("up"));
+    }
+    if (!e.target.closest(".navbar")) {
+      document.getElementById("navMenu").classList.remove("show");
+      document.getElementById("menuIcon").src = "icons/more.svg";
+    }
+  });
+});
+
+function toggleMenu() {
+  const menu = document.getElementById("navMenu");
+  const icon = document.getElementById("menuIcon");
+  const isOpen = menu.classList.toggle("show");
+  icon.style.opacity = 0;
+  setTimeout(() => {
+    icon.src = isOpen ? "icons/close.svg" : "icons/more.svg";
+    icon.style.opacity = 1;
+  }, 200);
+}
+
+function navigateTo(link) {
+  window.location.href = link;
+}
+
+function toggleDropdown(trigger, id) {
+  const dropdown = document.getElementById(id);
+  const icon = trigger.querySelector("i");
+  const isOpen = dropdown.classList.toggle("show");
+  icon.classList.toggle("up", isOpen);
+  document.querySelectorAll(".dropdown").forEach(d => {
+    if (d.id !== id) d.classList.remove("show");
+  });
+  document.querySelectorAll(".nav-item i").forEach(i => {
+    if (i !== icon) i.classList.remove("up");
+  });
+}
+
+function toggleFaq(el) {
+  const item = el.parentElement;
+  const answer = item.querySelector(".faq-answer");
+  const icon = el.querySelector("i");
+  if (item.classList.contains("open")) {
+    const height = answer.scrollHeight;
+    answer.style.height = height + "px";
+    answer.offsetHeight;
+    answer.style.transition = "height 0.4s ease, opacity 0.4s ease";
+    answer.style.height = "0";
+    answer.style.opacity = "0";
+    icon.classList.replace("fa-minus", "fa-plus");
+    answer.addEventListener("transitionend", function handler() {
+      item.classList.remove("open");
+      answer.removeAttribute("style");
+      answer.removeEventListener("transitionend", handler);
+    });
+  } else {
+    item.classList.add("open");
+    answer.style.height = "0";
+    answer.style.opacity = "0";
+    answer.offsetHeight;
+    answer.style.transition = "height 0.4s ease, opacity 0.4s ease";
+    answer.style.height = answer.scrollHeight + "px";
+    answer.style.opacity = "1";
+    icon.classList.replace("fa-plus", "fa-minus");
+    answer.addEventListener("transitionend", function handler() {
+      answer.style.height = "auto";
+      answer.style.removeProperty("transition");
+      answer.removeEventListener("transitionend", handler);
+    });
+  }
+}
+
+function scrollToPlans() {
+  const plansSection = document.getElementById("plans");
+  const yOffset = -150;
+  const y = plansSection.getBoundingClientRect().top + window.pageYOffset + yOffset;
+  window.scrollTo({ top: y, behavior: "smooth" });
+}
+</script>
+
 </body>
 </html>
